@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root"; // Replace with your MySQL username
-$password = ""; // Replace with your MySQL password
+$username = "root"; 
+$password = "";
 $dbname = "product_catalog";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -10,7 +10,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Product Model Class (re-declared for this page)
 class Product {
     private $conn;
 
@@ -35,7 +34,6 @@ class Product {
 $product = new Product($conn);
 $categories = $product->getAllCategories();
 
-// Handling Add Product Form Submission
 $error = [];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validation
@@ -66,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ];
 
         if ($product->addProduct($data)) {
-            header("Location: index.php"); // Redirect to product list
+            header("Location: index.php"); 
             exit();
         } else {
             echo "Error adding product.";
