@@ -1,33 +1,7 @@
 <?php
-// Database Setup (You can execute this SQL separately via phpMyAdmin or a similar tool)
-/*
-CREATE DATABASE IF NOT EXISTS `product_catalog`;
-
-USE `product_catalog`;
-
-CREATE TABLE `categories` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `nom` VARCHAR(50) NOT NULL,
-  `description` TEXT
-);
-
-CREATE TABLE `produits` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `nom` VARCHAR(100) NOT NULL,
-  `description` TEXT NOT NULL,
-  `prix` DECIMAL(10,2) NOT NULL,
-  `stock` INT NOT NULL,
-  `id_categorie` INT,
-  `image` VARCHAR(255),
-  `date_ajout` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (`id_categorie`) REFERENCES `categories`(`id`)
-);
-*/
-
-// Database Connection
 $servername = "localhost";
-$username = "root"; // Replace with your MySQL username
-$password = ""; // Replace with your MySQL password
+$username = "root";
+$password = "";
 $dbname = "product_catalog";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -36,7 +10,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Product Model Class
 class Product {
     private $conn;
 
